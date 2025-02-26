@@ -6,8 +6,8 @@
 struct Data{
     char name[100];
     char ticket[100];
-    struct Data *next;
     struct Data *prev;
+    struct Data *next;
 }*h, *t, *c;
 
 int queue = 0;
@@ -34,6 +34,7 @@ void push(char name[], char ticket[]){
     c->next = NULL;
     if(h == NULL){
         h = t = c;
+        return;
     }
     struct Data *temp = h;
     while(temp != NULL){
@@ -140,8 +141,15 @@ int main(){
                 scanf("%d", &n); getchar();
                 for (int i = 0; i < n; i++)
                 {
-                    char name[20], ticket[20];
-                    scanf("%s %s", name, ticket); getchar();
+                    char name[100], ticket[100];
+                    printf("Enter Name: ");
+                    fgets(name, sizeof(name), stdin);
+                    name[strcspn(name, "\n")] = 0; 
+                    
+                    printf("Enter Ticket: ");
+                    fgets(ticket, sizeof(ticket), stdin);
+                    ticket[strcspn(ticket, "\n")] = 0;
+
                     push(name, ticket);
                     queue++;
                 }
@@ -166,6 +174,7 @@ int main(){
                 puts("got into the boat");
                 break;
             case 4:
+                return 0;
                 break;
             }
         }while(1);

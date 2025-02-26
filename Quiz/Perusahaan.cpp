@@ -124,6 +124,7 @@ int main(){
     display();
     dekyu();
     dekyu();
+    printf("\n");
     display();
 
     displayDeleted();

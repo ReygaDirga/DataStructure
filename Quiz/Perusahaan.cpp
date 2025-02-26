@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-#include <stdbool.h>
 
 struct Data{
     int id;
@@ -49,7 +48,7 @@ void display(){
     }
 }
 
-void displayDeleted(){
+void displayhashinganddekyu(){
     printf("\nProcessing vulnerabilities...\n");
     printf("\nStored Processed Vulnerabilities\n");
     for(int i = 0; i < deletedCount; i++){
@@ -127,7 +126,7 @@ int main(){
     printf("\n");
     display();
 
-    displayDeleted();
+    displayhashinganddekyu();
 
     return 0;
 }

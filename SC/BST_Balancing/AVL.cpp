@@ -107,7 +107,7 @@ node* deletee(node* root, int val){
         // Kasus 1 & 2: Node tanpa anak atau 1 anak
         if(root->left == NULL || root->right == NULL){  
             node* temp;
-            if (root->left != NULL) {
+            if (root->left) {
                 temp = root->left;
             } else {
                 temp = root->right;
@@ -164,6 +164,17 @@ node* deletee(node* root, int val){
     return root;
 }
 
+node* search(node* root, int val){
+    if(root == NULL || root->val == val){
+        return root;
+    }
+    if(val < root->val){
+        return search(root->left, val);
+    }else{
+        return search(root->right, val);
+    }
+}
+
 void inOrder(node* root){
     if(root != NULL){
         inOrder(root->left);
@@ -175,17 +186,23 @@ void inOrder(node* root){
 int main(){
 
     node* root = NULL;
-    root = insert(root, 50);
-    root = insert(root, 30);
-    root = insert(root, 70);
-    root = insert(root, 20);
-    root = insert(root, 40);
-    root = insert(root, 60);
+    root = insert(root, 5);
+    root = insert(root, 15);
+    root = insert(root, 75);
+    root = insert(root, 53);
+    root = insert(root, 65);
     
     inOrder(root);
     printf("\n");
-    root = deletee(root, 30); 
+    root = deletee(root, 15); 
     inOrder(root);
+    printf("\n");
+    node* hasil = search(root, 65);
+    if(hasil != NULL){
+        printf("Found %d\n", hasil->val);
+    }else{
+        printf("Not Found\n");
+    }
 
 
     return 0;
